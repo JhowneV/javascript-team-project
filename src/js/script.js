@@ -137,16 +137,23 @@ function pageCall(page) {
 }
 //////////////////////////////////////////////////////////////////////////////////
 ///Watched Movies
-document.addEventListener('DOMContentLoaded', fetchWatchedMovies);
-
-function fetchWatchedMovies() {
+function displayWatchedMovies() {
     const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
 
     watchedMovies.forEach(movieId => {
         fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=YOUR_API_KEY`)
-            .then(response => response.json())
-            .then(data => displayMovie(data))
-            .catch(error => console.error('Error fetching data: ', error));
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                displayMovie(data);
+            })
+            .catch(error => {
+                console.error('Error fetching movie:', error);
+            });
     });
 }
 
@@ -161,11 +168,7 @@ function displayMovie(movie) {
     moviesList.appendChild(movieElement);
 }
 
-function addMovieToWatched(movieId) {
-    const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
-    if (!watchedMovies.includes(movieId)) {
-        watchedMovies.push(movieId);
-        localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
-    }
-}
-
+// Call the function to display watched movies when the page loads
+window.onload = function() {
+    displayWatchedMovies();
+};
