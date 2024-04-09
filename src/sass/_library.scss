@@ -295,7 +295,18 @@ main {
     box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
 }
 
+.button-with-heading {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    
+}
 
+.heading-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+}
 /* Adjustments for small screens */
 @media screen and (max-width: 600px) {
     #watched-movies {

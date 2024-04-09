@@ -136,12 +136,28 @@ function pageCall(page) {
     }
 }
 //////////////////////////////////////////////////////////////////////////////////
-///Watched Movies
+///watched and queue button
+
+const watchedButton = document.getElementById('watched-btn');
+const queueButton = document.getElementById('queue-btn');
+
+// Add event listeners to the buttons
+watchedButton.addEventListener('click', handleWatchedButtonClick);
+queueButton.addEventListener('click', handleQueueButtonClick);
+
+// Function to handle clicking the "Watched" button
+function handleWatchedButtonClick() {
+    // Perform actions when the "Watched" button is clicked
+    console.log('Watched button clicked');
+    // You can add code here to display watched movies or perform other actions
+//////Watched Movies
+
 function displayWatchedMovies() {
+    // Initialize watched variable with data from localStorage
     const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
 
     watchedMovies.forEach(movieId => {
-        fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=YOUR_API_KEY`)
+        fetch(`https://api.themoviedb.org/3/movie/${watched - movies}?api_key=YOUR_ACTUAL_API_KEY`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -158,7 +174,7 @@ function displayWatchedMovies() {
 }
 
 function displayMovie(movie) {
-    const moviesList = document.getElementById('movies-list');
+    const moviesList = document.getElementById('main');
     const movieElement = document.createElement('div');
     movieElement.innerHTML = `
         <h3>${movie.title}</h3>
@@ -172,3 +188,23 @@ function displayMovie(movie) {
 window.onload = function() {
     displayWatchedMovies();
 };
+}
+
+// Function to handle clicking the "Queue" button
+function handleQueueButtonClick() {
+    // Perform actions when the "Queue" button is clicked
+    console.log('Queue button clicked');
+    // You can add code here to display queued movies or perform other actions
+/////////////////////////////////////////
+///     Queu 
+
+}
+
+
+
+
+
+
+
+
+
