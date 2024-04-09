@@ -135,69 +135,134 @@ function pageCall(page) {
         getMovies(url);
     }
 }
-//////////////////////////////////////////////////////////////////////////////////
-///watched and queue button
+// //////////////////////////////////////////////////////////////////////////////////
+// ///watched and queue button
 
+// const watchedButton = document.getElementById('watched-btn');
+// const queueButton = document.getElementById('queue-btn');
+
+// // Add event listeners to the buttons
+// watchedButton.addEventListener('click', handleWatchedButtonClick);
+// queueButton.addEventListener('click', handleQueueButtonClick);
+
+// // Function to handle clicking the "Watched" button
+// function handleWatchedButtonClick() {
+//     // Perform actions when the "Watched" button is clicked
+//     console.log('Watched button clicked');
+//     // You can add code here to display watched movies or perform other actions
+// //////Watched Movies
+
+// function displayWatchedMovies() {
+//     // Initialize watched variable with data from localStorage
+//     const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
+
+//     watchedMovies.forEach(movieId => {
+//         fetch(`https://api.themoviedb.org/3/movie/${watched - movies}?api_key=YOUR_ACTUAL_API_KEY`)
+//             .then(response => {
+//                 if (!response.ok) {
+//                     throw new Error('Network response was not ok');
+//                 }
+//                 return response.json();
+//             })
+//             .then(data => {
+//                 displayMovie(data);
+//             })
+//             .catch(error => {
+//                 console.error('Error fetching movie:', error);
+//             });
+//     });
+// }
+
+// function displayMovie(movie) {
+//     const moviesList = document.getElementById('main');
+//     const movieElement = document.createElement('div');
+//     movieElement.innerHTML = `
+//         <h3>${movie.title}</h3>
+//         <p>${movie.overview}</p>
+//         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+//     `;
+//     moviesList.appendChild(movieElement);
+// }
+
+// // Call the function to display watched movies when the page loads
+// window.onload = function() {
+//     displayWatchedMovies();
+// };
+// }
+
+// // Function to handle clicking the "Queue" button
+// function handleQueueButtonClick() {
+//     // Perform actions when the "Queue" button is clicked
+//     console.log('Queue button clicked');
+//     // You can add code here to display queued movies or perform other actions
+// /////////////////////////////////////////
+// ///     Queu 
+
+// }
+
+////////////////////////////////////////////////////////////////////////////////
+//Library button
+
+// Wait for the DOM content to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the library navbar button
+    const libraryButton = document.querySelector('.header-link.libr');
+
+    // Simulate a click on the library navbar button
+    libraryButton.click();
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Get references to the buttons
 const watchedButton = document.getElementById('watched-btn');
 const queueButton = document.getElementById('queue-btn');
 
 // Add event listeners to the buttons
-watchedButton.addEventListener('click', handleWatchedButtonClick);
-queueButton.addEventListener('click', handleQueueButtonClick);
+watchedButton.addEventListener('click', displayWatchedMovies);
+queueButton.addEventListener('click', displayQueue);
 
-// Function to handle clicking the "Watched" button
-function handleWatchedButtonClick() {
-    // Perform actions when the "Watched" button is clicked
-    console.log('Watched button clicked');
-    // You can add code here to display watched movies or perform other actions
-//////Watched Movies
-
+// Function to display watched movies
 function displayWatchedMovies() {
-    // Initialize watched variable with data from localStorage
+    // Retrieve watched movies data from local storage
     const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
 
-    watchedMovies.forEach(movieId => {
-        fetch(`https://api.themoviedb.org/3/movie/${watched - movies}?api_key=YOUR_ACTUAL_API_KEY`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                displayMovie(data);
-            })
-            .catch(error => {
-                console.error('Error fetching movie:', error);
-            });
+    // Clear previous content from movies-container
+    const moviesContainer = document.getElementById('movies-container');
+    moviesContainer.innerHTML = '';
+
+    // Display each watched movie
+    watchedMovies.forEach(movie => {
+        const movieElement = createMovieElement(movie);
+        moviesContainer.appendChild(movieElement);
     });
 }
 
-function displayMovie(movie) {
-    const moviesList = document.getElementById('main');
+// Function to display queue movies
+function displayQueue() {
+    // Retrieve queue movies data from local storage
+    const queueMovies = JSON.parse(localStorage.getItem('queueMovies')) || [];
+
+    // Clear previous content from movies-container
+    const moviesContainer = document.getElementById('movies-container');
+    moviesContainer.innerHTML = '';
+
+    // Display each queued movie
+    queueMovies.forEach(movie => {
+        const movieElement = createMovieElement(movie);
+        moviesContainer.appendChild(movieElement);
+    });
+}
+
+// Function to create a movie element
+function createMovieElement(movie) {
     const movieElement = document.createElement('div');
+    movieElement.classList.add('movie');
     movieElement.innerHTML = `
-        <h3>${movie.title}</h3>
+        <h2>${movie.title}</h2>
         <p>${movie.overview}</p>
         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
     `;
-    moviesList.appendChild(movieElement);
-}
-
-// Call the function to display watched movies when the page loads
-window.onload = function() {
-    displayWatchedMovies();
-};
-}
-
-// Function to handle clicking the "Queue" button
-function handleQueueButtonClick() {
-    // Perform actions when the "Queue" button is clicked
-    console.log('Queue button clicked');
-    // You can add code here to display queued movies or perform other actions
-/////////////////////////////////////////
-///     Queu 
-
+    return movieElement;
 }
 
 
