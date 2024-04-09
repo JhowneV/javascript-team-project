@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="header-bottom">
             <form class="searchform" id="search-form">
                 <input type="text" name="query" autocomplete="off" placeholder="Search for movies..." id="search-input">
@@ -42,23 +42,30 @@
             </form>
             <img class="srcline" src="../images/Line 1.png" alt="line">
         </div>
-    </header>
-  
-    <main class="main-content" id="main">
-        <section>
-            <div class="buttons">
+        <!-- <div class="buttons">
+            <nav>
                 <ul class="ul-btn">
                     <li>
                         <button id="watched-btn" class="header-link">Watched Films</button>
                         <button id="queue-btn" class="header-link">Queue</button>
                     </li>
                 </ul>
+            </nav>
+        </div> -->
+        
+    </header>
+  
+    <main class="main-content" id="main">
+        <section>
+            <div class="watchedmovies" id="watched-movies">
+                <h2>My Watched Movies</h2>
+                <div class="movie-list" id="movies-list"></div>
             </div>
         </section>
 
-        <section class="section">
+         <section class="section">
             <div class="container">
-                <div class="gallery">
+                <div class="gallery"> 
                 <!-- Video Cards -->
                 </div>
             </div>
@@ -71,15 +78,13 @@
   <div class="page" id="prev">Previous Page</div>
   <div class="current" id="current">1</div>
   <div class="page" id="next">Next Page</div>
-</div>
+</div> 
 
   <!-- ❗️❗️❗️ Add partials like so for every page -->
 
    </main>
     <include src="./partials/task4_footer.html"></include>
     <script src="../js/script.js" type="module"></script>
-    <script src="../js/library.js" type="module"></script>
-
 </body>
 
 </html>

@@ -22,7 +22,6 @@ main {
     overflow: hidden;
 }
 
-
 .movie img {
     width: 100%;
 }
@@ -255,4 +254,55 @@ main {
         display: flex;
     }
 
+}
+
+// Watched Movies
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// body {
+//     font-family: 'Arial', sans-serif;
+//     background-color: #f4f4f4;
+//     color: #333;
+//     line-height: 1.6;
+//     padding: 20px;
+// }
+
+.watchedmovies {
+    margin: auto;
+    width: 80%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.movies-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.movies-list {
+    background: #eee;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+}
+
+
+/* Adjustments for small screens */
+@media screen and (max-width: 600px) {
+    #watched-movies {
+        width: 95%;
+    }
+
+    #movies-list {
+        grid-template-columns: 1fr;
+    }
 }

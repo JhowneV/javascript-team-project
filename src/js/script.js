@@ -135,4 +135,37 @@ function pageCall(page) {
         getMovies(url);
     }
 }
+//////////////////////////////////////////////////////////////////////////////////
+///Watched Movies
+document.addEventListener('DOMContentLoaded', fetchWatchedMovies);
+
+function fetchWatchedMovies() {
+    const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
+
+    watchedMovies.forEach(movieId => {
+        fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=YOUR_API_KEY`)
+            .then(response => response.json())
+            .then(data => displayMovie(data))
+            .catch(error => console.error('Error fetching data: ', error));
+    });
+}
+
+function displayMovie(movie) {
+    const moviesList = document.getElementById('movies-list');
+    const movieElement = document.createElement('div');
+    movieElement.innerHTML = `
+        <h3>${movie.title}</h3>
+        <p>${movie.overview}</p>
+        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+    `;
+    moviesList.appendChild(movieElement);
+}
+
+function addMovieToWatched(movieId) {
+    const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
+    if (!watchedMovies.includes(movieId)) {
+        watchedMovies.push(movieId);
+        localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
+    }
+}
 
