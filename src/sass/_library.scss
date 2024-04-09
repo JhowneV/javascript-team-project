@@ -1,3 +1,6 @@
+@import "./task4_footer";
+@import "./task123";
+
 body {
     margin: 0;
     font-family: 'roboto', sans-serif;
@@ -94,6 +97,32 @@ main {
 .mylibrary {
     display: flex;
     gap: 20px;
+}
+
+.navlink {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 24px;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.active {
+    color: whitesmoke;
+}
+
+.ul-btn {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    gap: 24px;
 }
 
 .libr,

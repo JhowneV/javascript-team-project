@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JAVASCRIPT-TEAM 3 </title>
-    <link rel="stylesheet" href="../sass/library.scss" />
+    <link rel="stylesheet" href="../sass/_library.scss" />
     <!-- <script type="module" src="./index.js"></script> -->
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,8 +25,12 @@
             </div>
             <div class="header-top-right">
                 <div class="mylibrary">
-                    <a class="header-link homebtn" href="#">HOME</a>
-                    <a class="header-link libr" href="#" type="submit">MY LIBRARY</a>
+                    <nav class="navbar">
+                        <ul class="nav-links">
+                            <li><a class="header-link homebtn" href="#">HOME</a></li>
+                            <li><a class="header-link libr active" href="#" type="submit">MY LIBRARY</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -38,16 +42,43 @@
             </form>
             <img class="srcline" src="../images/Line 1.png" alt="line">
         </div>
-
     </header>
-   <main>
-    <div>
-        <button id="watched-btn" class="header-link">Watched Films</button>
-        <button id="queue-btn" class="header-link">Queue</button>
-    </div>
+  
+    <main class="main-content" id="main">
+        <section>
+            <div class="buttons">
+                <ul class="ul-btn">
+                    <li>
+                        <button id="watched-btn" class="header-link">Watched Films</button>
+                        <button id="queue-btn" class="header-link">Queue</button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="gallery">
+                <!-- Video Cards -->
+                </div>
+            </div>
+        </section>
+            <div id="movies-container"></div>
+    </main>
+
+  <!-- PAGINATION SECTION -->
+<div class="pagination">
+  <div class="page" id="prev">Previous Page</div>
+  <div class="current" id="current">1</div>
+  <div class="page" id="next">Next Page</div>
+</div>
+
+  <!-- ❗️❗️❗️ Add partials like so for every page -->
+
    </main>
     <include src="./partials/task4_footer.html"></include>
     <script src="../js/script.js" type="module"></script>
+    <script src="../js/library.js" type="module"></script>
 
 </body>
 
